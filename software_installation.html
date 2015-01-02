@@ -26,7 +26,7 @@
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="top" title="AMath 574, Winter 2015 1.0 documentation" href="index.html" />
-    <link rel="prev" title="Contents" href="index.html" /> 
+    <link rel="prev" title="Contents — Under Development" href="index.html" /> 
   </head>
   <body>
 
@@ -54,7 +54,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="index.html" title="Contents"
+          <a href="index.html" title="Contents — Under Development"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html"><font color="#39275b">Contents</font></a>|&nbsp;</li>
         <li><a href="biblio.html"><font color="#39275b">Bibliography</font></a>|&nbsp;</li>
@@ -72,13 +72,14 @@
 <li><a class="reference internal" href="#git">Git</a></li>
 <li><a class="reference internal" href="#clawpack">Clawpack</a></li>
 <li><a class="reference internal" href="#fortran-and-python">Fortran and Python</a></li>
+<li><a class="reference internal" href="#testing-your-clawpack-installation">Testing your Clawpack installation</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
-                        title="previous chapter">Contents</a></p>
+                        title="previous chapter">Contents &#8212; Under Development</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/software_installation.txt"
@@ -124,10 +125,13 @@ be updated during the quarter.</li>
 the GitHub <a class="reference external" href="https://help.github.com/articles/set-up-git/">Set Up Git</a>
 page, which includes information on how to install it.</p>
 <p>See the <a class="reference external" href="http://www.clawpack.org/git_resources.html">Clawpack git
-resources page</a> for more links.</p>
+resources page</a> for more links
+to tutorials, etc.</p>
+<p>The <a class="reference external" href="http://www.clawpack.org/developers.html">Clawpack Developers&#8217; Guide</a>
+has some information about our standard development procedure with Git.</p>
 </div>
 <div class="section" id="clawpack">
-<h2>Clawpack<a class="headerlink" href="#clawpack" title="Permalink to this headline">¶</a></h2>
+<span id="install-clawpack"></span><h2>Clawpack<a class="headerlink" href="#clawpack" title="Permalink to this headline">¶</a></h2>
 <p>We will use Clawpack extensively in this class.  To insure you have the
 latest version and to make it easy to incorporate changes during the
 quarter, I suggest installing by cloning the Github repositories, following
@@ -166,10 +170,45 @@ own account if you want to be able to fix bugs or add new features and then
 issue pull requests.</p>
 </div>
 <div class="section" id="fortran-and-python">
-<h2>Fortran and Python<a class="headerlink" href="#fortran-and-python" title="Permalink to this headline">¶</a></h2>
-<p>See the <a class="reference external" href="http://www.clawpack.org/installing.html#installation-prerequisites">Clawpack Installation Prerequisites</a>.</p>
-<p>See also the <a class="reference external" href="http://faculty.washington.edu/rjl/classes/am583s2014/notes/software_installation.html">Downloading and installing software</a>
-page from AMath 583 last spring, which has some other tips.</p>
+<span id="install-fortran-python"></span><h2>Fortran and Python<a class="headerlink" href="#fortran-and-python" title="Permalink to this headline">¶</a></h2>
+<p>A recent version of <cite>gfortran</cite> or other Fortran compiler should be fine.</p>
+<p>We will use Python 2.x (not 3.x).  I recommend the
+<a class="reference external" href="http://continuum.io/downloads">Anaconda distribution</a>
+of Python 2.7 since this contains a long
+<a class="reference external" href="http://docs.continuum.io/anaconda/pkg-docs.html">list of packages</a>,
+including the latest version of the IPython notebook, matplotlib, etc.</p>
+<p>See also:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.clawpack.org/installing.html#installation-prerequisites">Clawpack Installation Prerequisites</a></li>
+<li><a class="reference external" href="http://faculty.washington.edu/rjl/classes/am583s2014/notes/software_installation.html">Downloading and installing software</a>
+page from AMath 583 last spring, which has some other tips.</li>
+</ul>
+</div>
+<div class="section" id="testing-your-clawpack-installation">
+<span id="install-test"></span><h2>Testing your Clawpack installation<a class="headerlink" href="#testing-your-clawpack-installation" title="Permalink to this headline">¶</a></h2>
+<p>If everything is working properly, you should be able to do the following:</p>
+<div class="highlight-python"><div class="highlight"><pre>cd $CLAW/classic/examples/acoustics_1d_example
+make .exe  # should compile the code
+make .output  # should run the code
+make .plots   # should plot the results
+</pre></div>
+</div>
+<p>then you should be able to open the file <cite>_plots/_PlotIndex.html</cite> in a web
+browser and view the results.</p>
+<p>To test if IPython notebooks are working properly, try the following
+example.  It has not yet been merged into the master branch of the <cite>apps</cite>
+repository, so you&#8217;ll have to check out a different branch:</p>
+<div class="highlight-python"><div class="highlight"><pre>cd $CLAW/apps
+git checkout notebook_experiments
+cd $CLAW/apps/notebooks/classic/advection_1d
+ipython notebook advection_1d.ipynb
+</pre></div>
+</div>
+<p>You should be able to execute all cells (one at a time by repeatedly hitting
+<cite>Shift-Enter</cite>, or all of them by choosing <cite>Run All</cite> from the <cite>Cell</cite> menu at
+the top.</p>
+<p>The resulting notebook should look like this:
+<a class="reference external" href="http://nbviewer.ipython.org/url/faculty.washington.edu/rjl/notebooks/advection_1d/advection_1d.ipynb">view via nbviewer</a></p>
 </div>
 </div>
 
@@ -186,7 +225,7 @@ page from AMath 583 last spring, which has some other tips.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="index.html" title="Contents"
+          <a href="index.html" title="Contents — Under Development"
              >previous</a> |</li>
         <li><a href="index.html"><font color="#39275b">Contents</font></a>|&nbsp;</li>
         <li><a href="biblio.html"><font color="#39275b">Bibliography</font></a>|&nbsp;</li>
@@ -197,7 +236,7 @@ page from AMath 583 last spring, which has some other tips.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2015, Randall J. LeVeque, CC BY.
-      Last updated on Dec 31, 2014.
+      Last updated on Jan 02, 2015.
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.1.
     </div>
   </body>
